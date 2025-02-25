@@ -14,6 +14,11 @@ window.TrelloPowerUp.initialize({
     }
 });
 
+// Ensure JavaScript is executed only when Trello is fully loaded
+document.addEventListener("DOMContentLoaded", function () {
+    console.log("Trello RTL Power-Up Loaded");
+});
+
 function applyRTL() {
     let styles = document.createElement("style");
     styles.innerHTML = `
