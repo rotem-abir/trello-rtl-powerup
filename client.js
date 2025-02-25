@@ -1,25 +1,34 @@
-window.TrelloPowerUp.initialize({
-    "board-buttons": function (t, opts) {
-        return [{
-            icon: "https://cdn-icons-png.flaticon.com/128/725/725107.png",
-            text: "Enable RTL",
-            callback: function (t) {
-                applyRTL();
-                return t.alert({
-                    message: "RTL mode enabled",
-                    duration: 5
-                });
+document.addEventListener("DOMContentLoaded", function () {
+    console.log("Trello RTL Power-Up: Waiting for Trello API...");
+
+    if (typeof window.TrelloPowerUp !== "undefined") {
+        console.log("Trello RTL Power-Up: API Loaded, Initializing...");
+
+        window.TrelloPowerUp.initialize({
+            "board-buttons": function (t, opts) {
+                console.log("Trello RTL Power-Up: Board Button Initialized");
+                return [{
+                    icon: "https://cdn-icons-png.flaticon.com/128/725/725107.png",
+                    text: "Enable RTL",
+                    callback: function (t) {
+                        console.log("Trello RTL Power-Up: RTL Mode Activated");
+                        applyRTL();
+                        return t.alert({
+                            message: "RTL mode enabled",
+                            duration: 5
+                        });
+                    }
+                }];
             }
-        }];
+        });
+    } else {
+        console.error("Trello RTL Power-Up: TrelloPowerUp is not defined. Retrying in 2 seconds...");
+        setTimeout(() => location.reload(), 2000);
     }
 });
 
-// Ensure JavaScript is executed only when Trello is fully loaded
-document.addEventListener("DOMContentLoaded", function () {
-    console.log("Trello RTL Power-Up Loaded");
-});
-
 function applyRTL() {
+    console.log("Trello RTL Power-Up: Applying RTL Styles");
     let styles = document.createElement("style");
     styles.innerHTML = `
         body, .list-card-details, .window {
