@@ -2,24 +2,14 @@
   "name": "Trello-RTL-Powerup",
   "description": "A Right-To-Left Power-Up for Trello",
   "author": "Rotem Abir",
-  "capabilities": [
-    "board-buttons",
-    "card-buttons"
-  ],
-  "connectors": {
-    "iframe": {
-      "url": "https://rotem-abir.github.io/trello-rtl-powerup/index.html"
-    }
-  },
+  "capabilities": ["board-buttons"],
+  "connectors": {},
   "icon": {
     "url": "https://cdn-icons-png.flaticon.com/128/725/725107.png"
   },
   "board-buttons": {
     "url": "https://rotem-abir.github.io/trello-rtl-powerup/client.js"
   },
-  "public": true,
-  "interactivity": "iframe",
-  "apiVersion": 1,
   "permissions": {
     "board": "read",
     "organization": "read"
