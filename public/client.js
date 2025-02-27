@@ -19,6 +19,25 @@ window.TrelloPowerUp.initialize({
           }
         };
       });
+    },
+    "card-buttons": function (t, opts) {
+      return [
+        {
+          icon: "https://rotem-abir.github.io/trello-rtl-powerup/public/rtl-icon.png", // Use any icon
+          text: "Toggle RTL Editor",
+          callback: function (t) {
+            return t.get("card", "shared", "rtlEditorVisible")
+              .then(function (visible) {
+                let newState = !visible;
+                return t.set("card", "shared", "rtlEditorVisible", newState)
+                  .then(() => t.alert({ message: newState ? "RTL Editor Enabled" : "RTL Editor Hidden", duration: 0.2 }));
+              });
+          }
+        }
+      ];
     }
   });
+
   
+
+
