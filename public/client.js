@@ -1,4 +1,6 @@
-console.log("✅");
+console.log("✅ RTL Powerup loaded");
+
+document.querySelector("iframe.plugin-iframe")?.removeAttribute("title");
 
 // Ensure Trello Power-Up API is loaded before running the script
 window.TrelloPowerUp.initialize({
@@ -13,7 +15,7 @@ window.TrelloPowerUp.initialize({
             // We load an iframe pointing to our custom HTML editor
             type: "iframe",
             url: t.signUrl("./cardBackEditor.html"),
-            height: 250 // initial height of the iframe (px)
+            height: 50 // initial height of the iframe (px)
           }
         };
       });

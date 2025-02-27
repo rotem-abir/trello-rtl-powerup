@@ -6,11 +6,11 @@ body {
 
 /* Editor container */
 #editor {
+  display: none;
   padding: 10px;
   border-radius: 3px;
   border: 1.5px solid #b8bdc5;
   background-color: white;
-  transition: all 0.2s ease-in-out;
 }
 
 #editor.saved-mode {
@@ -20,6 +20,10 @@ body {
 
 #editor.saved-mode #editor-controls {
   display: none; /* Hides the button & status icon */
+}
+
+#editor-controls {
+  display: none;
 }
 
 /* Toolbar */
@@ -48,7 +52,7 @@ body {
 #text-input {
   font: inherit;
   width: 100%;
-  height: auto;
+  /*height: auto; DO WE REALLY NEED IT?*/
   padding: 10px 0px 0px 0px;
   border: none;
   outline: none;
@@ -59,6 +63,18 @@ body {
   overflow: hidden;     /* Hide scrollbars. JS handle scrolling */
   display: block;
   min-height: 10px; /* Smaller default height */
+}
+
+
+/* Edit button */
+#editBtn {
+  margin-top: 8px;
+  background: #E2E6EA; /* Trello Blue */
+  color: #172A4C;
+  padding: 8px 12px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 13px;
 }
 
 /* Save button */
