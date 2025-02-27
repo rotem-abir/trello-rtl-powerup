@@ -68,6 +68,25 @@ body {
   background: #0c0268; /* Darker Trello blue on hover */
 }
 
+#savedText {
+  font: inherit;
+  width: 100%;
+  /*padding: 10px;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  background-color: white;*/
+  font-size: 14px;
+  direction: rtl;
+  text-align: right;
+  white-space: pre-wrap; /* Preserve formatting */
+  cursor: pointer; /* Indicates it's clickable */
+}
+
+#savedText:hover {
+  background-color: #f4f5f7; /* Light hover effect like Trello */
+  border-color: #b8bdc5;
+}
+
 /* Status icon */
 #statusIcon {
   margin-left: 8px;
