@@ -8,6 +8,13 @@ document.addEventListener("DOMContentLoaded", function() {
   statusIcon = document.getElementById("statusIcon");
   document.getElementById("editBtn").addEventListener("click", switchToEditMode);
 
+  document.addEventListener("keydown", function (event) {
+    if (event.ctrlKey && event.key === "Enter") {
+        event.preventDefault();
+        document.getElementById("saveBtn").click(); // ✅ Trigger save button
+    }
+  });
+
   // 1️⃣ Load stored text from Trello
   t.get('card', 'shared', 'myRTLText').then(function (storedText) {
     if (storedText) {

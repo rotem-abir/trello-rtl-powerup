@@ -70,11 +70,17 @@ body {
 #editBtn {
   margin-top: 8px;
   background: #E2E6EA; /* Trello Blue */
+  border: 1px solid #dcdfe4;
   color: #172A4C;
   padding: 8px 12px;
-  border-radius: 3px;
+  border-radius: 2px;
+  letter-spacing: 0.5px;
   cursor: pointer;
   font-size: 13px;
+}
+
+#editBtn:hover {
+  background: #CED3DA;
 }
 
 /* Save button */
@@ -87,6 +93,7 @@ body {
   border-radius: 3px;
   cursor: pointer;
   font-size: 13px;
+  letter-spacing: 0.5px;
 }
 
 #saveBtn:hover {
