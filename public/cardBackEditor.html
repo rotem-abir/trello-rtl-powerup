@@ -8,19 +8,19 @@
 <body>
   <div id="container">
     <div id="editor">
-        <div id="toolbar">
-            <button data-cmd="bold">B</button>
-            <button data-cmd="italic"><em>I</em></button>
-            <button data-cmd="insertUnorderedList">•</button>
-            <button data-cmd="createLink">🔗</button>
-          </div>
-            
-            <textarea id="text-input"></textarea>
-    
+      <div id="toolbar">
+        <button data-cmd="bold">B</button>
+        <button data-cmd="italic"><em>I</em></button>
+        <button data-cmd="insertUnorderedList">•</button>
+        <button data-cmd="createLink">🔗</button>
+      </div>
+          
+      <textarea id="text-input"></textarea>
     </div>
-    <button id="saveBtn">Save</button>
-    <span id="statusIcon">❌</span>
-
+    <div id="editor-controls">
+      <button id="saveBtn">Save</button>
+      <span id="statusIcon">❌</span>
+    </div>
   </div>
 
   <script src="https://p.trellocdn.com/power-up.min.js"></script>

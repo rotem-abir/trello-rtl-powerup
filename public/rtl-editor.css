@@ -10,7 +10,16 @@ body {
   border-radius: 3px;
   border: 1.5px solid #b8bdc5;
   background-color: white;
+  transition: all 0.2s ease-in-out;
+}
 
+#editor.saved-mode {
+  border: none !important;
+  background-color: transparent !important;
+}
+
+#editor.saved-mode #editor-controls {
+  display: none; /* Hides the button & status icon */
 }
 
 /* Toolbar */
@@ -71,10 +80,6 @@ body {
 #savedText {
   font: inherit;
   width: 100%;
-  /*padding: 10px;
-  border: 1px solid transparent;
-  border-radius: 3px;
-  background-color: white;*/
   font-size: 14px;
   direction: rtl;
   text-align: right;

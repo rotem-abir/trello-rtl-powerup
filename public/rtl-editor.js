@@ -14,16 +14,23 @@ document.addEventListener("DOMContentLoaded", function() {
         statusIcon.textContent = '✅';
         statusIcon.style.color = 'green';
 
-        // Hide editor & toolbar, display text instead
+        // Hide editor, toolbar, and controls
         document.getElementById("toolbar").style.display = "none";
         textInput.style.display = "none";
+        document.getElementById("editor-controls").style.display = "none"; // ✅ Ensure Save & Icon stay hidden
+        document.getElementById("editor").classList.add("saved-mode");
 
-        // Create and display saved text
-        var savedTextDiv = document.createElement("div");
-        savedTextDiv.id = "savedText";
-        savedTextDiv.classList.add("savedText");
+        // Create or update savedTextDiv
+        var savedTextDiv = document.getElementById("savedText");
+        if (!savedTextDiv) {
+            savedTextDiv = document.createElement("div");
+            savedTextDiv.id = "savedText";
+            savedTextDiv.classList.add("savedText");
+            document.getElementById("editor").appendChild(savedTextDiv);
+        }
+
         savedTextDiv.textContent = storedText;
-        document.getElementById("editor").appendChild(savedTextDiv);
+        savedTextDiv.style.display = "block";
 
         // Add click event to switch back to edit mode
         savedTextDiv.addEventListener("click", function () {
@@ -34,7 +41,6 @@ document.addEventListener("DOMContentLoaded", function() {
         statusIcon.style.color = 'red';
     }
   });
-
 
   // 2️⃣ Detect text changes, mark as unsaved (Red X)
   textInput.addEventListener('input', function() {
@@ -65,11 +71,13 @@ document.addEventListener("DOMContentLoaded", function() {
     statusIcon.textContent = '✅';
     statusIcon.style.color = 'green';
 
-    // Hide editor & toolbar, display text instead
-    document.getElementById("toolbar").style.display = "none"; // Hide toolbar
-    textInput.style.display = "none"; // Hide textarea
+    // Hide editor & toolbar, display saved text instead
+    document.getElementById("toolbar").style.display = "none";
+    textInput.style.display = "none";
+    document.getElementById("editor-controls").style.display = "none"; // Hide Save & Icon
+    document.getElementById("editor").classList.add("saved-mode");
 
-    // Check if the savedTextDiv already exists
+    // Check if savedTextDiv already exists
     var savedTextDiv = document.getElementById("savedText");
     if (!savedTextDiv) {
         savedTextDiv = document.createElement("div");
@@ -79,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     savedTextDiv.textContent = text;
-    savedTextDiv.style.display = "block"; // Show saved text
+    savedTextDiv.style.display = "block";
 
     // Add click event to switch back to edit mode
     savedTextDiv.addEventListener("click", function () {
@@ -92,13 +100,16 @@ document.addEventListener("DOMContentLoaded", function() {
     textInput.style.display = "block"; // Show textarea
     textInput.value = originalText; // Restore text
     textInput.focus(); // Focus the text input
+    document.getElementById("editor-controls").style.display = "block"; // Show Save & Icon
 
     var savedTextDiv = document.getElementById("savedText");
     if (savedTextDiv) {
         savedTextDiv.style.display = "none"; // Hide saved text
     }
-  }
 
+    // Remove saved-mode class from #editor
+    document.getElementById("editor").classList.remove("saved-mode");
+  }
 
   // 5️⃣ Auto-resize the editor height based on content
   function autoResize() {
