@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>My RTL Editor</title>
+  <link rel="stylesheet" href="rtl-editor.css">
+</head>
+<body>
+  <div id="container">
+    <div id="editor">
+        <div id="toolbar">
+            <button data-cmd="bold">B</button>
+            <button data-cmd="italic"><em>I</em></button>
+            <button data-cmd="insertUnorderedList">•</button>
+            <button data-cmd="createLink">🔗</button>
+          </div>
+            
+            <textarea id="text-input"></textarea>
+    
+    </div>
+    <button id="saveBtn">Save</button>
+    <span id="statusIcon">❌</span>
+
+  </div>
+
+  <script src="https://p.trellocdn.com/power-up.min.js"></script>
+  <script src="rtl-editor.js"></script>
+</body>
+</html>
