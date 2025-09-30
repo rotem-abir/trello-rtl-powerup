@@ -63,6 +63,7 @@ body {
   overflow: hidden;     /* Hide scrollbars. JS handle scrolling */
   display: block;
   min-height: 10px; /* Smaller default height */
+  white-space: pre-wrap;
 }
 
 

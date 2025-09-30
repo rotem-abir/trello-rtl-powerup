@@ -2,6 +2,47 @@ var t = window.TrelloPowerUp.iframe();
 var textInput, saveBtn, statusIcon, editBtn, toolbar, editorControls, editor, savedTextDiv, editorContainer;
 var originalText = ""; // Track the original stored text
 
+const model = {
+    originalText:  "",
+    isEditing: false,
+};
+
+const vm = {
+    editorContainer,
+    editor,
+    toolbar,
+    textInput,
+    editorControls,
+    saveBtn,
+    statusIcon,
+    editBtn,
+    savedTextDiv,
+
+    init: function () {
+        vm.cacheElements();
+        vm.bindEvents();
+        vm.loadStoredText();
+    },
+
+    cacheElements: function () {
+        vm.elements = {
+            editorContainer: document.getElementById("container"),
+            editor: document.getElementById("editor"),
+            toolbar: document.getElementById("toolbar"),
+            textInput: document.getElementById("text-input"),
+            editorControls: document.getElementById("editor-controls"),
+            saveBtn: document.getElementById("saveBtn"),
+            statusIcon: document.getElementById("statusIcon"),
+            editBtn: document.getElementById("editBtn"),
+            savedTextDiv: document.getElementById("savedText") || vm.createSavedTextDiv(),    
+        }
+    }
+};
+
+const view = {
+
+};
+
 document.addEventListener("DOMContentLoaded", function () {
     // Store elements in variables once
     textInput = document.getElementById("text-input");
@@ -16,14 +57,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Attach event listeners
     editBtn.addEventListener("click", switchToEditMode);
-
+    
     document.addEventListener("keydown", function (event) {
         if (event.ctrlKey && event.key === "Enter") {
             event.preventDefault();
             saveBtn.click(); // Trigger save button
         }
     });
-
+    
     // Load stored text from Trello
     t.get("card", "shared", "myRTLText").then(function (storedText) {
         if (storedText) {
@@ -43,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 editor.appendChild(savedTextDiv);
             }
             savedTextDiv.addEventListener("click", switchToEditMode);
-            savedTextDiv.textContent = storedText;
+            savedTextDiv.innerHTML = storedText;
             savedTextDiv.style.display = "block"; // Ensure visibility
             editor.style.display = "block"; // Ensure editor is shown
 
@@ -64,7 +105,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Clicking the red X reverts changes
     statusIcon.addEventListener("click", function () {
         if (statusIcon.textContent === "❌") {
-            textInput.value = originalText || "";
+            textInput.innerHTML = originalText || "";
             statusIcon.textContent = "✅";
             statusIcon.style.color = "green";
             autoResize();
@@ -73,10 +114,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Save text to Trello
     saveBtn.addEventListener("click", async function () {
-        var text = textInput.value;
-        await t.set("card", "shared", "myRTLText", text);
+        const html = textInput.innerHTML;
+        await t.set("card", "shared", "myRTLText", html);
 
-        originalText = text;
+        originalText = html;
         statusIcon.textContent = "✅";
         statusIcon.style.color = "green";
 
@@ -93,7 +134,7 @@ document.addEventListener("DOMContentLoaded", function () {
             editor.appendChild(savedTextDiv);
         }
 
-        savedTextDiv.textContent = text;
+        savedTextDiv.innerHTML = html;
         savedTextDiv.style.display = "block";
         savedTextDiv.addEventListener("click", switchToEditMode);
 
@@ -106,7 +147,7 @@ document.addEventListener("DOMContentLoaded", function () {
         editBtn.style.display = "none";
         editorControls.style.display = "block";
         textInput.style.display = "block";
-        textInput.value = originalText;
+        textInput.innerHTML = originalText;
         textInput.focus();
 
         if (savedTextDiv) {
