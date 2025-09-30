@@ -43,6 +43,20 @@ const view = {
 
 };
 
+document.querySelectorAll('#toolbar [data-cmd]').forEach(btn=>{
+    btn.addEventListener('click', e=>{
+      const cmd = e.currentTarget.dataset.cmd;
+      if (cmd === 'emoji') {
+        const sel = getSelection(); if (!sel.rangeCount) return;
+        const r = sel.getRangeAt(0); r.deleteContents();
+        r.insertNode(document.createTextNode('🙂')); r.collapse(false);
+      } else {
+        document.execCommand(cmd, false, null);
+      }
+      textInput.focus();
+    });
+  });  
+
 document.addEventListener("DOMContentLoaded", function () {
     // Store elements in variables once
     textInput = document.getElementById("text-input");
