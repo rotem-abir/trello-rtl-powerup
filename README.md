@@ -23,9 +23,6 @@
 11. Custom > RTL Power-Up > Add > Add
 12. Congratulations!
 
-<br>
-
-![alt text](docs/v010-installation.gif)
 
 ## How to use
 
@@ -75,6 +72,9 @@ MSYS2_ARG_CONV_EXCL='*' openssl req -x509 -newkey rsa:2048 -sha256 -days 365 -no
 5. change Iframe connector URL to: `https://127.0.0.1` > Save
 6. Now the power up loads itself from your local server
 
+<br>
+
+![alt text](docs/v010-installation.gif)
 
 <br>
 
