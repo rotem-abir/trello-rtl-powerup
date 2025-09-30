@@ -2,7 +2,7 @@
 
 #### RTL support for Trello:
 
-> add a right-to-left text editor to each of your Trello cards (Desktop only).
+> add a right-to-left text editor to each of your Trello cards (browser only).
 
 
 
@@ -26,22 +26,24 @@
 
 ## How to use
 
-A. Once the power up is installed, section with "RTL Text Editor" will automatically be added in each card under the default card's "Description" section.
+(A) Once the power up is installed, a new section "RTL Text Editor" will automatically be added to every card on the board.
 
-B. Click "Edit" and add your Right-to-Left text > Save
+(B) Click "Edit" and add your Right-to-Left text
 
-C. Clicking the red "X" will cancel text edits
+(C) In editing mode, clicking the red "X" cancel text edits
+
+(D) Green "V" indicates no changes
 
 
 ## Current Limitations
 
-1. The power-up is working only on desktop (browser).
-2. On mobile, you can't see your RTL texts, but they didn't disappear! they are still there, but visible/editable only via desktop.
-3. The editor is still plan - hopefully be upgraded to rich text in the future.
+1. The power-up is working only on the browser (desktop and mobile).
+2. No native app support but: on the app you can't see your RTL texts, yet they didn't disappear! they are still there, but visible/editable only via browser.
+3. The editor is still plan - hopefully be upgraded to rich text in the future. ***FIXED. will appear in next release v0.1.1***
 
 ## Your Data
 
-1. The power up does not have access to your data
+1. The power up does not have access to your data.
 2. It saves a key-value in Trello’s Power-Up data (pluginData) store
 3. If you disable the power up, you can still keep the power up data
 4. Once you enable the power up, your data will appear on your cards
