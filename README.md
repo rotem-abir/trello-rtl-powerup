@@ -5,7 +5,6 @@
 > add a right-to-left text editor to each of your Trello cards (browser only).
 
 
-
 ## Installation
 
 1. go to > https://trello.com/power-ups/admin
@@ -24,6 +23,10 @@
 11. Custom > RTL Power-Up > Add > Add
 12. Congratulations!
 
+<br>
+
+![alt text](docs/v010-installation.gif)
+
 ## How to use
 
 (A) Once the power up is installed, a new section "RTL Text Editor" will automatically be added to every card on the board.
@@ -33,6 +36,8 @@
 (C) In editing mode, clicking the red "X" cancel text edits
 
 (D) Green "V" indicates no changes
+
+![alt text](docs/v010-m.jpg)
 
 
 ## Current Limitations
