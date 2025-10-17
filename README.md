@@ -1,8 +1,14 @@
 # trello-rtl-powerup
 
-#### RTL support for Trello:
+## RTL support for Trello
 
-> add a right-to-left text editor to each of your Trello cards (browser only).
+> Add a right-to-left text editor to each of your Trello cards (browser only).
+
+#### Key features:
+- Toggle RTL/LTR instantly on any board
+- Aligns card descriptions
+- Working per-board (saves data via Trello Power-Up storage)
+- Zero tracking, zero external APIs
 
 
 ## Installation
@@ -50,6 +56,7 @@
 3. If you disable the power up, you can still keep the power up data
 4. Once you enable the power up, your data will appear on your cards
 5. There is no liability for your stored data, as the power up is working properly at the time of writing this.
+***see privacy.md***
 
 
 ## Development
