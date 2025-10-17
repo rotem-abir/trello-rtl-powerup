@@ -11,9 +11,9 @@
 2. New > New Power-Up or Integration name > `RTL Power-Up`
 3. Workspace > Pick your workspace 
 4. Email / Support / Author > as you like
-5. iFrame connector URL > `https://rotem-abir.github.io/trello-rtl-powerup/public`
+5. iFrame connector URL > `https://trello-rtl-powerup.pages.dev/`
 6. Create
-7. Icon > `https://rotem-abir.github.io/trello-rtl-powerup/public/rtl-icon.png` > Save
+7. Icon > `https://trello-rtl-powerup.pages.dev/rtl-icon.png` > Save
 8. Capabilities > turn on:
     * Board buttons
     * Card back section
@@ -55,6 +55,11 @@
 ## Development
 
 ### Server
+
+0. Install server dependencies:
+```
+npm install express nodemon
+```
 
 1. Create OpenSSL (self-signed) key + certificate:
 ```
