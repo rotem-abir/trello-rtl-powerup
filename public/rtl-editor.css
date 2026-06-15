@@ -18,8 +18,13 @@ body {
   display: none;
   padding: 10px;
   border-radius: 3px;
-  border: 1.5px solid #b8bdc5;
+  border: 2px solid #b8bdc5;
   background-color: white;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+#editor:focus-within {
+  border-color: #388bff;
 }
 
 #editor.saved-mode {
