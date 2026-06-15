@@ -233,13 +233,10 @@ onReady(function () {
 
     function adjustIframeSize(newHeight = null) {
         if (newHeight) {
-            window.iframeHeight = newHeight;
+            t.sizeTo(newHeight).done();
         } else {
-            if (editorContainer) {
-                window.iframeHeight = Math.max(editorContainer.scrollHeight + 5, 50); // 🔹 Add 5px buffer
-            }
+            t.sizeTo('#container').done();
         }
-        t.sizeTo(window.iframeHeight).done();
     }
 
     function autoResize() {
