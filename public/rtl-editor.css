@@ -22,13 +22,13 @@ body {
   display: none;
   padding: 10px;
   border-radius: 3px;
-  border: 2px solid #b8bdc5;
-  background-color: white;
+  border: 2px solid var(--ds-border-input, #b8bdc5);
+  background-color: var(--ds-background-input, white);
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 #editor:focus-within {
-  border-color: #388bff;
+  border-color: var(--ds-border-focused, #388bff);
 }
 
 #editor.saved-mode {
@@ -49,7 +49,7 @@ body {
   display: flex;
   align-items: center;
   padding: 0px 0px 5px 0px;
-  border-bottom: 1px solid #d0d4db;
+  border-bottom: 1px solid var(--ds-border, #d0d4db);
   gap: 2px;
 }
 
@@ -59,19 +59,19 @@ body {
   font-size: 14px;
   cursor: pointer;
   padding: 5px 10px;
-  color: #172b4d;
+  color: var(--ds-text, #172b4d);
   transition: background 0.2s;
   border-radius: 3px;
 }
 
 #toolbar button:hover {
-  background: #ebecf0;
+  background: var(--ds-background-neutral-hovered, #ebecf0);
 }
 
 .toolbar-sep {
   width: 1px;
   height: 20px;
-  background: #d0d4db;
+  background: var(--ds-border, #d0d4db);
   margin: 0 4px;
   flex-shrink: 0;
 }
@@ -84,7 +84,7 @@ body {
 #heading-toggle {
   font-size: 13px;
   font-weight: 600;
-  color: #0c66e4;
+  color: var(--ds-link, #0c66e4);
   display: flex;
   align-items: center;
   gap: 2px;
@@ -99,10 +99,10 @@ body {
   position: absolute;
   top: calc(100% + 4px);
   left: 0;
-  background: white;
-  border: 1px solid #d0d4db;
+  background: var(--ds-surface-overlay, white);
+  border: 1px solid var(--ds-border, #d0d4db);
   border-radius: 4px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 12px var(--ds-shadow-overlay, rgba(0,0,0,0.15));
   min-width: 280px;
   z-index: 100;
   padding: 4px 0;
@@ -120,7 +120,7 @@ body {
   padding: 6px 16px;
   border-radius: 0;
   font-weight: normal;
-  color: #172b4d;
+  color: var(--ds-text, #172b4d);
   gap: 16px;
   white-space: nowrap;
 }
@@ -132,7 +132,7 @@ body {
 }
 
 #heading-menu button:hover {
-  background: #e8eeff;
+  background: var(--ds-background-selected-hovered, #e8eeff);
 }
 
 #heading-menu button[data-block="p"]  { font-size: 14px; }
@@ -144,9 +144,9 @@ body {
 #heading-menu .shortcut {
   font-size: 11px;
   font-weight: 400;
-  color: #5e6c84;
-  background: #f1f2f4;
-  border: 1px solid #d0d4db;
+  color: var(--ds-text-subtle, #5e6c84);
+  background: var(--ds-background-neutral-subtle, #f1f2f4);
+  border: 1px solid var(--ds-border, #d0d4db);
   border-radius: 3px;
   padding: 1px 5px;
   white-space: nowrap;
@@ -177,9 +177,9 @@ body {
 /* Edit button */
 #editBtn {
   margin-top: 8px;
-  background: #E2E6EA; /* Trello Blue */
-  border: 1px solid #dcdfe4;
-  color: #172A4C;
+  background: var(--ds-background-neutral, #E2E6EA);
+  border: 1px solid var(--ds-border, #dcdfe4);
+  color: var(--ds-text, #172A4C);
   padding: 8px 12px;
   border-radius: 2px;
   letter-spacing: 0.5px;
@@ -188,14 +188,14 @@ body {
 }
 
 #editBtn:hover {
-  background: #CED3DA;
+  background: var(--ds-background-neutral-hovered, #CED3DA);
 }
 
 /* Save button */
 #saveBtn {
   margin-top: 8px;
-  background: #0C66E4; /* Trello Blue */
-  color: white;
+  background: var(--ds-background-brand-bold, #0C66E4);
+  color: var(--ds-text-inverse, white);
   border: none;
   padding: 8px 12px;
   border-radius: 3px;
@@ -205,7 +205,7 @@ body {
 }
 
 #saveBtn:hover {
-  background: #0c0268; /* Darker Trello blue on hover */
+  background: var(--ds-background-brand-bold-hovered, #0c0268);
 }
 
 #savedText {
@@ -219,8 +219,8 @@ body {
 }
 
 #savedText:hover {
-  background-color: #f4f5f7; /* Light hover effect like Trello */
-  border-color: #b8bdc5;
+  background-color: var(--ds-background-neutral-subtle-hovered, #f4f5f7);
+  border-color: var(--ds-border-input, #b8bdc5);
 }
 
 /* Status icon */
