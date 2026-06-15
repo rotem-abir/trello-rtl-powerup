@@ -67,7 +67,7 @@ document.querySelectorAll('#toolbar [data-cmd]').forEach(btn=>{
     menu.hidden = false;
     toggle.setAttribute('aria-expanded', 'true');
     var container = document.getElementById('container');
-    var extraHeight = container ? container.scrollHeight + menu.offsetHeight + 16 : 300;
+    var extraHeight = (container ? container.scrollHeight : 100) + 200;
     t.sizeTo(extraHeight).done();
   }
 
