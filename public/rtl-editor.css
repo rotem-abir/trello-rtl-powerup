@@ -2,10 +2,14 @@
   box-sizing: border-box;
 }
 
+html {
+  overflow: hidden;
+}
+
 body {
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
+  overflow: hidden;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
@@ -90,7 +94,7 @@ body {
   border: 1px solid #d0d4db;
   border-radius: 4px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  min-width: 220px;
+  min-width: 280px;
   z-index: 100;
   padding: 4px 0;
 }
@@ -101,7 +105,7 @@ body {
 
 #heading-menu button {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   width: 100%;
   padding: 6px 16px;
@@ -109,6 +113,13 @@ body {
   font-weight: normal;
   color: #172b4d;
   gap: 16px;
+  white-space: nowrap;
+}
+
+#heading-menu button .label {
+  flex: 1;
+  white-space: nowrap;
+  text-align: left;
 }
 
 #heading-menu button:hover {
@@ -120,8 +131,6 @@ body {
 #heading-menu button[data-block="h2"] { font-size: 22px; font-weight: 700; }
 #heading-menu button[data-block="h3"] { font-size: 18px; font-weight: 700; }
 #heading-menu button[data-block="h4"] { font-size: 16px; font-weight: 700; }
-#heading-menu button[data-block="h5"] { font-size: 14px; font-weight: 700; }
-#heading-menu button[data-block="h6"] { font-size: 13px; font-weight: 700; color: #5e6c84; }
 
 #heading-menu .shortcut {
   font-size: 11px;

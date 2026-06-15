@@ -63,8 +63,19 @@ document.querySelectorAll('#toolbar [data-cmd]').forEach(btn=>{
   const menu   = document.getElementById('heading-menu');
   if (!toggle || !menu) return;
 
-  function openMenu()  { menu.hidden = false; toggle.setAttribute('aria-expanded', 'true'); }
-  function closeMenu() { menu.hidden = true;  toggle.setAttribute('aria-expanded', 'false'); }
+  function openMenu() {
+    menu.hidden = false;
+    toggle.setAttribute('aria-expanded', 'true');
+    var container = document.getElementById('container');
+    var extraHeight = container ? container.scrollHeight + menu.offsetHeight + 16 : 300;
+    t.sizeTo(extraHeight).done();
+  }
+
+  function closeMenu() {
+    menu.hidden = true;
+    toggle.setAttribute('aria-expanded', 'false');
+    t.sizeTo('#container').done();
+  }
 
   toggle.addEventListener('click', function (e) {
     e.stopPropagation();
@@ -96,7 +107,11 @@ document.querySelectorAll('#toolbar [data-cmd]').forEach(btn=>{
   menu.addEventListener('click', function (e) { e.stopPropagation(); });
 })();
 
-document.addEventListener("DOMContentLoaded", function () {
+function onReady(fn) {
+    if (document.readyState !== 'loading') { fn(); } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+
+onReady(function () {
     // Store elements in variables once
     textInput = document.getElementById("text-input");
     saveBtn = document.getElementById("saveBtn");
