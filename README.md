@@ -63,6 +63,21 @@
 
 ## Development
 
+### Quick workflow
+
+**Local UI development**
+- Run `run-server.bat`
+- Test pages directly in the browser
+
+**Trello testing**
+- Run `deploy-dev.bat`
+- Wait for Cloudflare to deploy
+- Test using the dev Power-Up
+
+**Production**
+- Merge `dev` into `main`
+- Run `deploy-main.bat`
+
 ### Branch workflow
 
 | Branch | Purpose | Cloudflare URL |

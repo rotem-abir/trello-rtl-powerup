@@ -55,7 +55,46 @@ document.querySelectorAll('#toolbar [data-cmd]').forEach(btn=>{
       }
       textInput.focus();
     });
-  });  
+  });
+
+// Heading picker
+(function () {
+  const toggle = document.getElementById('heading-toggle');
+  const menu   = document.getElementById('heading-menu');
+  if (!toggle || !menu) return;
+
+  function openMenu()  { menu.hidden = false; toggle.setAttribute('aria-expanded', 'true'); }
+  function closeMenu() { menu.hidden = true;  toggle.setAttribute('aria-expanded', 'false'); }
+
+  toggle.addEventListener('click', function (e) {
+    e.stopPropagation();
+    menu.hidden ? openMenu() : closeMenu();
+  });
+
+  menu.querySelectorAll('[data-block]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      const tag = btn.dataset.block;
+      textInput && textInput.focus();
+      document.execCommand('formatBlock', false, tag === 'p' ? '<p>' : '<' + tag + '>');
+      closeMenu();
+      textInput && textInput.focus();
+    });
+  });
+
+  // Ctrl+Alt+0-6 shortcuts
+  const blockMap = { 0:'p', 1:'h1', 2:'h2', 3:'h3', 4:'h4', 5:'h5', 6:'h6' };
+  document.addEventListener('keydown', function (e) {
+    if (!e.ctrlKey || !e.altKey) return;
+    const tag = blockMap[e.key];
+    if (!tag) return;
+    e.preventDefault();
+    textInput && textInput.focus();
+    document.execCommand('formatBlock', false, tag === 'p' ? '<p>' : '<' + tag + '>');
+  });
+
+  document.addEventListener('click', closeMenu);
+  menu.addEventListener('click', function (e) { e.stopPropagation(); });
+})();
 
 document.addEventListener("DOMContentLoaded", function () {
     // Store elements in variables once

@@ -36,7 +36,8 @@ body {
   display: flex;
   align-items: center;
   padding: 0px 0px 5px 0px;
-  border-bottom: 1px solid #d0d4db; /* Separator */
+  border-bottom: 1px solid #d0d4db;
+  gap: 2px;
 }
 
 #toolbar button {
@@ -44,13 +45,95 @@ body {
   border: none;
   font-size: 14px;
   cursor: pointer;
-  padding: 5px 10px 5px 10px;
-  color: #172b4d; /* Trello's default text color */
+  padding: 5px 10px;
+  color: #172b4d;
   transition: background 0.2s;
+  border-radius: 3px;
 }
 
 #toolbar button:hover {
-  background: #ebecf0; /* Light hover effect like Trello */
+  background: #ebecf0;
+}
+
+.toolbar-sep {
+  width: 1px;
+  height: 20px;
+  background: #d0d4db;
+  margin: 0 4px;
+  flex-shrink: 0;
+}
+
+/* Heading picker */
+#heading-picker {
+  position: relative;
+}
+
+#heading-toggle {
+  font-size: 13px;
+  font-weight: 600;
+  color: #0c66e4;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  white-space: nowrap;
+}
+
+#heading-toggle .caret {
+  font-size: 10px;
+}
+
+#heading-menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  background: white;
+  border: 1px solid #d0d4db;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  min-width: 220px;
+  z-index: 100;
+  padding: 4px 0;
+}
+
+#heading-menu[hidden] {
+  display: none;
+}
+
+#heading-menu button {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  width: 100%;
+  padding: 6px 16px;
+  border-radius: 0;
+  font-weight: normal;
+  color: #172b4d;
+  gap: 16px;
+}
+
+#heading-menu button:hover {
+  background: #e8eeff;
+}
+
+#heading-menu button[data-block="p"]  { font-size: 14px; }
+#heading-menu button[data-block="h1"] { font-size: 26px; font-weight: 700; }
+#heading-menu button[data-block="h2"] { font-size: 22px; font-weight: 700; }
+#heading-menu button[data-block="h3"] { font-size: 18px; font-weight: 700; }
+#heading-menu button[data-block="h4"] { font-size: 16px; font-weight: 700; }
+#heading-menu button[data-block="h5"] { font-size: 14px; font-weight: 700; }
+#heading-menu button[data-block="h6"] { font-size: 13px; font-weight: 700; color: #5e6c84; }
+
+#heading-menu .shortcut {
+  font-size: 11px;
+  font-weight: 400;
+  color: #5e6c84;
+  background: #f1f2f4;
+  border: 1px solid #d0d4db;
+  border-radius: 3px;
+  padding: 1px 5px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  align-self: center;
 }
 
 /* Editor text input area */
