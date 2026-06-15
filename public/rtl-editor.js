@@ -156,7 +156,7 @@ onReady(function () {
             savedTextDiv.style.display = "block"; // Ensure visibility
             editor.style.display = "block"; // Ensure editor is shown
 
-            adjustIframeSize(); // Resize properly after loading
+            requestAnimationFrame(function () { adjustIframeSize(); });
         } else {
             statusIcon.textContent = "❌";
             statusIcon.style.color = "red";
