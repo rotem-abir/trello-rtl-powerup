@@ -63,14 +63,65 @@
 
 ## Development
 
-### Server
+### Branch workflow
 
-0. Install server dependencies:
+| Branch | Purpose | Cloudflare URL |
+|---|---|---|
+| `main` | Production | `https://trello-rtl-powerup.pages.dev/` |
+| `dev` | Trello dev testing | `https://dev.trello-rtl-powerup.pages.dev/` |
+
+### Cloudflare Pages setup
+
+| Setting | Value |
+|---|---|
+| Framework preset | None |
+| Build command | *(empty)* |
+| Build output directory | `public` |
+| Production branch | `main` |
+| Branch deploys | Enabled for non-production branches (or restrict to `dev`) |
+| Branch subdomain / alias | Enabled (required for stable `dev.*` URL) |
+
+Use the stable branch alias URL in Trello admin, not per-commit preview URLs.
+
+### Trello Power-Up setup
+
+**Production** (existing Power-Up):
+- Iframe connector URL: `https://trello-rtl-powerup.pages.dev/`
+- Icon: `https://trello-rtl-powerup.pages.dev/rtl-icon.png`
+
+**Dev** (create a second Power-Up, e.g. "RTL Power-Up Dev"):
+- Iframe connector URL: `https://dev.trello-rtl-powerup.pages.dev/`
+- Icon: `https://dev.trello-rtl-powerup.pages.dev/rtl-icon.png`
+- Capabilities: Card back section, Card buttons
+
+Do **not** point a Trello iframe connector at `https://127.0.0.1` or `https://localhost`. A self-signed local HTTPS certificate breaks the Trello iframe handshake.
+
+### Production workflow
+
+1. Work on `main`
+2. Push to `origin/main` when ready
+3. Cloudflare auto-deploys to `https://trello-rtl-powerup.pages.dev/`
+4. Production Trello Power-Up uses the production URL above
+
+### Dev workflow (Trello testing)
+
+1. Work on `dev`
+2. Push `dev` to origin
+3. Cloudflare deploys to `https://dev.trello-rtl-powerup.pages.dev/`
+4. Point the dev Trello Power-Up iframe URL at the dev Pages URL
+5. Enable the dev Power-Up on a test board
+6. Merge `dev` into `main` when validated
+
+### Local-only workflow (not for Trello iframe testing)
+
+Use this only to verify static files load in a top-level browser tab.
+
+1. Install server dependencies locally:
 ```
-npm install express nodemon
+npm install express
 ```
 
-1. Create OpenSSL (self-signed) key + certificate:
+2. Create OpenSSL (self-signed) key + certificate:
 ```
 bash
 
@@ -80,11 +131,11 @@ MSYS2_ARG_CONV_EXCL='*' openssl req -x509 -newkey rsa:2048 -sha256 -days 365 -no
   -addext "subjectAltName=DNS:localhost,IP:127.0.0.1"
 ```
 
-2. Add `cert.pem` and `key.pem` to `/server`
-3. to run the server, open bash inside `/server` and type: `node server.js`
-4. go to > https://trello.com/power-ups/admin > "RTL Power-Up"
-5. change Iframe connector URL to: `https://127.0.0.1` > Save
-6. Now the power up loads itself from your local server
+3. Add `cert.pem` and `key.pem` to `/server` (local only, gitignored)
+4. Run `run-server.bat`, or from `/server`: `node server.js`
+5. Open the URL printed by the server (default: `https://127.0.0.1:8443/`)
+
+**Warning:** self-signed HTTPS will not work inside Trello iframes. Use Cloudflare Pages dev deploys for Trello testing instead.
 
 <br>
 
