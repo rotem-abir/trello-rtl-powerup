@@ -34,7 +34,7 @@ body {
 #editor.saved-mode {
   border: none !important;
   background-color: transparent !important;
-  padding: 0 !important;
+  padding: 4px 10px 0 10px !important;
 }
 
 #editor.saved-mode #editor-controls {
