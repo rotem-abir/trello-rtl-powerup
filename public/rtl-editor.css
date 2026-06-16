@@ -34,6 +34,7 @@ body {
 #editor.saved-mode {
   border: none !important;
   background-color: transparent !important;
+  padding: 0 !important;
 }
 
 #editor.saved-mode #editor-controls {
@@ -176,7 +177,7 @@ body {
 
 /* Edit button */
 #editBtn {
-  margin-top: 8px;
+  margin-top: 4px;
   background: var(--ds-background-neutral, #E2E6EA);
   border: 1px solid var(--ds-border, #dcdfe4);
   color: var(--ds-text, #172A4C);
